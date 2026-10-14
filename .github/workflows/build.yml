@@ -5,19 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.8
-      - name: Build
-        run: gradle build --info
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
       - name: Upload jar
-        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Voxium-jar
-          path: build/libs/*.jar
+          name: Voxium-FPS-Mod
+          path: |
+            build/libs/*.jar
+            remappedSrc/*.jar
+            build/devlibs/*.jar
