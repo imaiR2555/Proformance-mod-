@@ -10,15 +10,12 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Build
+        run: gradle build
       - name: Upload jar
         uses: actions/upload-artifact@v4
         with:
           name: Voxium-FPS-Mod
-          path: |
-            build/libs/*.jar
-            remappedSrc/*.jar
-            build/devlibs/*.jar
+          path: build/libs/*.jar
