@@ -1,18 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "voxium",
-  "version": "1.0.0",
-  "name": "Voxium",
-  "description": "Ultimate FPS boost for 1.21.10 - Dark Blue Edition",
-  "authors": ["imaiR2555"],
-  "icon": "icon.png",
+  "version": "${version}",
+  "name": "Voxium FPS",
+  "description": "Voxium FPS Boost Mod for 1.21.10",
+  "authors": ["Voxium"],
+  "license": "MIT",
   "environment": "client",
   "entrypoints": {
-    "client": ["com.voxium.VoxiumClient"]
+    "client": ["com.voxium.client.VoxiumClient"]
   },
   "depends": {
-    "fabricloader": ">=0.15.0",
+    "fabricloader": ">=0.16.0",
     "minecraft": "~1.21.10",
-    "java": ">=21"
+    "java": ">=21",
+    "fabric-api": "*"
   }
 }
